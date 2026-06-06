@@ -1,0 +1,70 @@
+/* ─────────────────────────────────────────
+   FOOTER  —  Figma accuracy pass
+   Figma: white background, dark text,
+   4 equal columns, simple copyright line
+───────────────────────────────────────── */
+.footer {
+  background: var(--white);
+  border-top: 1px solid var(--gray-200);
+  padding: 56px 32px 0;
+}
+
+/* 4-column grid matching Figma layout */
+.footer__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding-bottom: 48px;
+}
+
+.footer__col-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 18px;
+}
+
+.footer__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__col-link {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  transition: color 0.2s;
+  white-space: pre-line;
+}
+
+.footer__col-link:hover {
+  color: var(--text-dark);
+}
+
+/* Copyright strip */
+.footer__bottom {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 18px 0;
+  border-top: 1px solid var(--gray-200);
+}
+
+.footer__bottom p {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .footer__inner { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+}
+
+@media (max-width: 480px) {
+  .footer__inner { grid-template-columns: 1fr; }
+}

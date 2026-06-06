@@ -1,0 +1,255 @@
+/* ─────────────────────────────────────────
+   HERO  —  Figma accuracy pass
+───────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* nav height + comfortable vertical padding matching Figma proportions */
+  padding: calc(var(--nav-h) + 70px) 24px 90px;
+  overflow: hidden;
+  background: var(--white);
+}
+
+/* ── Headline block ── */
+.hero__content {
+  max-width: 660px;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
+}
+
+.hero--visible .hero__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Figma heading: large, natural weight, near-zero letter-spacing, tight line-height */
+.hero__headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5.6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0px;
+  color: var(--black);
+  margin-bottom: 24px;
+}
+
+/* Highlights — Figma: solid filled background, no underline, tight padding */
+.mark {
+  background: none;
+  color: inherit;
+  display: inline;
+  padding: 1px 6px 3px;
+  border-radius: 4px;
+}
+
+.mark--yellow {
+  background: var(--yellow);
+}
+
+/* Figma green mark: plain fill, NO underline */
+.mark--green {
+  background: var(--green-light);
+}
+
+/* Body text — narrow column matching Figma */
+.hero__body {
+  font-size: 0.875rem;
+  color: var(--text-body);
+  line-height: 1.75;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* ── Squiggles — positioned to flank the central text block ── */
+.hero__squiggle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Left squiggle: below-left of headline, running roughly under left third */
+.hero__squiggle--left {
+  width: 280px;
+  bottom: 30%;
+  left: 5%;
+  opacity: 0.65;
+  transform: rotate(-3deg);
+}
+
+/* Right squiggle: below-right of headline */
+.hero__squiggle--right {
+  width: 240px;
+  bottom: 22%;
+  right: 5%;
+  opacity: 0.6;
+  transform: rotate(4deg);
+}
+
+/* ── Purple cursor arrow ── */
+.hero__cursor {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  /* Figma: sits upper-right, just inside avatar cluster */
+  top: 18%;
+  right: 7%;
+  width: 28px;
+  height: 36px;
+  filter: drop-shadow(0 2px 4px rgba(107,70,193,0.3));
+}
+
+/* ── Floating avatars ── */
+.hero__avatars {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero__avatar {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--white);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+  opacity: 0;
+  animation: avatarPop 0.65s var(--ease-out) forwards;
+}
+
+.hero__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+@keyframes avatarPop {
+  from { opacity: 0; transform: scale(0.72); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.hero__avatar:nth-child(odd)  {
+  animation: avatarPop 0.65s var(--ease-out) forwards,
+             floatA 6s ease-in-out infinite 1.2s;
+}
+.hero__avatar:nth-child(even) {
+  animation: avatarPop 0.65s var(--ease-out) forwards,
+             floatB 7s ease-in-out infinite 0.6s;
+}
+
+@keyframes floatA {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
+}
+
+/* ── Geometric accent shapes ── */
+.hero__deco {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Large red triangle — left-center, matches Figma placement */
+.hero__deco--tri-red {
+  width: 0; height: 0;
+  border-left: 28px solid transparent;
+  border-right: 28px solid transparent;
+  border-bottom: 48px solid var(--red);
+  top: 28%;
+  left: 8%;
+  opacity: 0.9;
+}
+
+/* Small red triangle — bottom-right area */
+.hero__deco--tri-red2 {
+  width: 0; height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 30px solid var(--red);
+  bottom: 28%;
+  right: 20%;
+  opacity: 0.8;
+}
+
+/* Purple blob top-right — Figma signature shape */
+.hero__deco--blob-purple {
+  width: 28px; height: 46px;
+  background: var(--purple);
+  border-radius: 50% 40% 50% 40%;
+  top: 10%;
+  right: 6%;
+  transform: rotate(22deg);
+}
+
+/* Smaller purple blob bottom-left */
+.hero__deco--blob-purple2 {
+  width: 18px; height: 30px;
+  background: var(--purple);
+  border-radius: 50% 40% 50% 40%;
+  bottom: 32%;
+  left: 6%;
+  transform: rotate(-18deg);
+  opacity: 0.6;
+}
+
+/* Yellow circle dot */
+.hero__deco--circle-yellow {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--yellow);
+  bottom: 36%;
+  right: 10%;
+}
+
+/* Outline rings */
+.hero__deco--ring {
+  width: 52px; height: 52px;
+  border: 2px solid rgba(230,57,70,0.22);
+  border-radius: 50%;
+  bottom: 24%;
+  left: 13%;
+}
+
+.hero__deco--ring2 {
+  width: 36px; height: 36px;
+  border: 2px solid rgba(107,70,193,0.28);
+  border-radius: 50%;
+  top: 22%;
+  left: 30%;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .hero__squiggle--left  { width: 220px; }
+  .hero__squiggle--right { width: 190px; }
+}
+
+@media (max-width: 900px) {
+  .hero__avatar   { display: none; }
+  .hero__deco     { display: none; }
+  .hero__squiggle { display: none; }
+  .hero__cursor   { display: none; }
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-h) + 48px);
+    padding-bottom: 64px;
+  }
+  .hero__content { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .hero__headline { font-size: 2.1rem; }
+  .hero__content  { max-width: 100%; }
+}

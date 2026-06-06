@@ -1,0 +1,225 @@
+/* ─────────────────────────────────────────
+   INFO SECTIONS  —  Figma accuracy pass
+───────────────────────────────────────── */
+.info {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 32px 20px;
+}
+
+/* ── Row layout ── */
+.info__row {
+  display: flex;
+  align-items: center;
+  /* Tightened from 72px — Figma gap is closer to 48px */
+  gap: 56px;
+  padding: 72px 0;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
+}
+
+.info__row.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.info__row--il { flex-direction: row; }
+
+/* ── Text ── */
+.info__text {
+  flex: 1;
+}
+
+.info__text--right { order: 2; }
+
+/* Figma heading: natural letter-spacing, tight line-height */
+.info__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: 0px;
+  color: var(--black);
+  margin-bottom: 18px;
+  max-width: 360px;
+}
+
+.info__body {
+  font-size: 0.875rem;
+  color: var(--text-body);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  max-width: 380px;
+}
+
+/* "Read more ————" link — matches Figma style */
+.info__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--black);
+  letter-spacing: 0.3px;
+  transition: gap 0.25s var(--ease-out);
+}
+
+.info__link:hover { gap: 16px; }
+
+.info__link-line {
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background: var(--black);
+  transition: width 0.25s var(--ease-out);
+}
+
+.info__link:hover .info__link-line { width: 52px; }
+
+/* ── Visual ── */
+.info__visual {
+  flex: 1;
+  position: relative;
+  /* Figma circle images sit in approx 340px tall space */
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info__visual--left { order: 1; }
+
+/* Figma circle images: approx 280–300px diameter */
+.info__img-wrap {
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.info__img-wrap:hover { transform: scale(1.03); }
+
+.info__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+  display: block;
+}
+
+.info__img-wrap:hover img { transform: scale(1.06); }
+
+.info__img-wrap--offset { margin-left: -10px; }
+
+/* ── Decorative shapes ── */
+.info__deco {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.info__deco--tri {
+  width: 0; height: 0;
+  border-left: 34px solid transparent;
+  border-right: 34px solid transparent;
+  border-bottom: 58px solid var(--red);
+  top: 5%; right: 5%;
+  opacity: 0.9;
+  z-index: 3;
+}
+
+.info__deco--tri2 {
+  width: 0; height: 0;
+  border-left: 28px solid transparent;
+  border-right: 28px solid transparent;
+  border-bottom: 48px solid var(--red);
+  bottom: 12%; left: -2%;
+  opacity: 0.9;
+  z-index: 3;
+}
+
+/* Soft pink glow behind image circle */
+.info__deco--glow {
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(252,180,180,0.22) 0%, transparent 68%);
+  right: -16px; top: 8%;
+  z-index: 0;
+}
+
+.info__deco--blob-purple {
+  width: 20px; height: 34px;
+  background: var(--purple);
+  border-radius: 50% 40% 50% 40%;
+  top: 7%; left: 4%;
+  transform: rotate(-18deg);
+  opacity: 0.8;
+  z-index: 3;
+}
+
+.info__deco--square-outline {
+  width: 64px; height: 64px;
+  border: 2.5px solid var(--black);
+  bottom: 4%; right: -2%;
+  z-index: 3;
+}
+
+.info__deco--dot-yellow {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--yellow);
+  top: 8%; right: 3%;
+  z-index: 3;
+}
+
+/* ── Squiggles ── */
+.info__squiggle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.info__squiggle--r {
+  width: 220px;
+  bottom: 10%;
+  right: -50px;
+  opacity: 0.5;
+  transform: rotate(-4deg);
+}
+
+.info__squiggle--l {
+  width: 190px;
+  bottom: 12%;
+  left: -36px;
+  opacity: 0.5;
+  transform: rotate(3deg);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .info__row,
+  .info__row--il {
+    flex-direction: column !important;
+    gap: 36px;
+    padding: 52px 0;
+  }
+
+  .info__text, .info__text--right,
+  .info__visual, .info__visual--left {
+    order: unset;
+    max-width: 100%;
+  }
+
+  .info__text        { text-align: center; }
+  .info__heading     { max-width: 100%; }
+  .info__body        { max-width: 100%; }
+  .info__link        { justify-content: center; }
+  .info__visual      { min-height: 260px; }
+  .info__img-wrap    { width: 250px; height: 250px; }
+  .info__squiggle    { display: none; }
+}
