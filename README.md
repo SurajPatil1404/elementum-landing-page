@@ -1,115 +1,97 @@
 # Elementum — React Landing Page
 
-**Assignment submission for Ishank | Deadline: 06 June 2026**
+Responsive React landing page inspired by a Figma design.
+
+Built with React and Vite, featuring reusable components, responsive layouts, smooth interactions, and a clean modern UI.
 
 ## Tech Stack
-- React 18 + Vite 5
-- Plain CSS (no Tailwind, no CSS-in-JS)
-- Functional components
-- IntersectionObserver for scroll animations
-- Unsplash for real team/testimonial photos
+
+* React 18
+* Vite 5
+* Plain CSS
+* Functional Components
+* IntersectionObserver API
 
 ---
 
 ## Run Locally
 
 ```bash
-# 1. Install dependencies
+# Install dependencies
 npm install
 
-# 2. Start dev server
+# Start development server
 npm run dev
-# → http://localhost:5173
 
-# 3. Production build
+# Create production build
 npm run build
 
-# 4. Preview build
+# Preview production build
 npm run preview
 ```
 
-**Node.js 18+ required.**
-
----
-
-## Deploy to Vercel
-
-### Option A — Vercel CLI (fastest)
-
-```bash
-# Install CLI
-npm install -g vercel
-
-# Deploy from project root
-vercel
-
-# Prompts:
-#  Set up and deploy? → Y
-#  Which scope? → your account
-#  Link to existing project? → N
-#  Project name? → elementum (or anything)
-#  Directory? → ./  (press Enter)
-#  Override settings? → N
-
-# Production deploy
-vercel --prod
-```
-
-Your live URL will be printed: `https://elementum-xxx.vercel.app`
-
-### Option B — GitHub + Vercel Dashboard
-
-```bash
-# Push to GitHub
-git init
-git add .
-git commit -m "feat: Elementum landing page"
-git remote add origin https://github.com/YOUR_USERNAME/elementum.git
-git push -u origin main
-```
-
-1. Go to https://vercel.com → **Add New Project**
-2. Import your GitHub repo
-3. Vercel auto-detects Vite — no config needed:
-   - Framework: **Vite**
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-4. Click **Deploy** → live in ~60 seconds
+Node.js 18+ recommended.
 
 ---
 
 ## Project Structure
 
-```
+```text
 elementum/
 ├── index.html
-├── vite.config.js
 ├── package.json
-└── src/
-    ├── index.css          ← CSS variables, reset
-    ├── App.css
-    ├── App.jsx
-    ├── main.jsx
-    └── components/
-        ├── Navbar/        ← Sticky nav, mobile hamburger
-        ├── Hero/          ← Headline + floating avatars + shapes
-        ├── InfoSection/   ← Two alternating image/text rows
-        ├── Services/      ← 3-row services list with hover
-        ├── Testimonials/  ← Card + side avatars
-        ├── Newsletter/    ← Email capture, green bg
-        └── Footer/        ← 4-column dark footer
+├── vite.config.js
+├── src/
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── index.css
+│   └── components/
+│       ├── Navbar/
+│       ├── Hero/
+│       ├── InfoSection/
+│       ├── Services/
+│       ├── Testimonials/
+│       ├── Newsletter/
+│       └── Footer/
+└── README.md
 ```
+
+---
 
 ## Features
 
-- ✅ Responsive: mobile 375px / tablet 768px / desktop 1200px+
-- ✅ Sticky navbar with blur + shadow on scroll
-- ✅ Mobile hamburger with animated X toggle
-- ✅ Scroll-reveal animations via IntersectionObserver
-- ✅ Floating avatar animations in hero
-- ✅ Real photos from Unsplash (no placeholders)
-- ✅ Working email subscribe form with success state
-- ✅ Hover effects on nav links, service rows, avatars, buttons
-- ✅ CSS variables for consistent theming
-- ✅ Playfair Display + DM Sans font pairing
-- ✅ No animation libraries — pure CSS keyframes
+* Fully responsive design (Mobile, Tablet, Desktop)
+* Component-based architecture
+* Sticky navigation bar
+* Mobile hamburger menu
+* Smooth scroll animations
+* Interactive service cards
+* Newsletter subscription form
+* Testimonial section
+* Modern typography and spacing
+* Reusable React components
+* Clean and maintainable code structure
+
+---
+
+## Deployment
+
+The project can be deployed easily using Vercel.
+
+```bash
+npm run build
+```
+
+The production build will be generated inside the `dist` folder.
+
+---
+
+## Live Demo
+
+Deployed using Vercel.
+
+---
+
+## Author
+
+Suraj Patil
